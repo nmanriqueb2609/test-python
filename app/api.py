@@ -73,12 +73,12 @@ def square_root(op_1): #se define la funcióon para la operación de raiz cuadra
         return (str(e), http.client.BAD_REQUEST, HEADERS)
 
 
-@api_application.route("/calc/logarithm/<op_1>", methods=["GET"]) #Se agrega la ruta para el logarítmo
-def logarithm(op_1): #se define la funcióon para la operación de logarítmo
+@api_application.route("/calc/logarithm_base_10/<op_1>", methods=["GET"]) #Se agrega la ruta para el logarítmo
+def logarithm_base_10(op_1): #se define la función para la operación de logarítmo
     try:
         num_1 = util.convert_to_number(op_1)
         if num_1 <= 0:
             return ("Logarithm is not defined for non-positive numbers", http.client.BAD_REQUEST, HEADERS)
-        return ("{}".format(CALCULATOR.logarithm(num_1)), http.client.OK, HEADERS)
+        return ("{}".format(CALCULATOR.logarithm_base_10(num_1)), http.client.OK, HEADERS)
     except TypeError as e:
         return (str(e), http.client.BAD_REQUEST, HEADERS)

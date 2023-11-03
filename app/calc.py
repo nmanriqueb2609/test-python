@@ -1,5 +1,5 @@
 import app
-import math
+import math #Se importa el módulo math, para las funciones avanzadas
 
 class InvalidPermissions(Exception):
     pass
@@ -38,7 +38,7 @@ class Calculator:
             raise ValueError("Square root is not defined for negative numbers")
         return math.sqrt(x)
 
-    def logarithm(self, x):#Función logarítmo en base 10
+    def logarithm_base_10(self, x):#Función logarítmo en base 10
         self.check_types(x, 1)
         if x <= 0:#valida si los números son positivos para aplicarle el logarítmo
             raise ValueError("Logarithm is not defined for non-positive numbers")
@@ -47,10 +47,13 @@ class Calculator:
     def check_types(self, x, y):
         if not isinstance(x, (int, float)) or not isinstance(y, (int, float)):
             raise TypeError("Parameters must be numbers")
-
+        
+    def check_type(self, x): #Para comprobar si un solo número es del tipo adecuado (int o float)
+        if not isinstance(x, (int, float)):
+            raise TypeError("Parameter must be a number")
 
 if __name__ == "__main__":  # pragma: no cover
     calc = Calculator()
     result1 = calc.add(2, 2)
-    result2 = calc.logarithm(100)
+    result2 = calc.logarithm_base_10(100)
     print(result1, result2)

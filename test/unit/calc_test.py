@@ -46,10 +46,10 @@ class TestCalculate(unittest.TestCase):
         self.assertEqual(0.0, self.calc.square_root(0))
         self.assertRaises(ValueError, self.calc.square_root, -4)  # Raíz cuadrada de número negativo
 
-    def test_logarithm_method_returns_correct_result(self):
-        self.assertEqual(0.0, self.calc.logarithm(1))
-        self.assertEqual(2.0, self.calc.logarithm(100))
-        self.assertRaises(ValueError, self.calc.logarithm, 0)  # Logaritmo de número no positivo
+    def test_logarithm_base_10_method_returns_correct_result(self):
+        self.assertEqual(0.0, self.calc.logarithm_base_10(1))
+        self.assertEqual(2.0, self.calc.logarithm_base_10(100))
+        self.assertRaises(ValueError, self.calc.logarithm_base_10, 0)  # Logaritmo de número no positivo
 
     def test_add_method_fails_with_nan_parameter(self):
         self.assertRaises(TypeError, self.calc.add, "2", 2)

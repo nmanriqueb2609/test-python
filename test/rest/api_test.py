@@ -15,12 +15,6 @@ class TestApi(unittest.TestCase):
         self.assertIsNotNone(BASE_URL, "URL no configurada")
         self.assertTrue(len(BASE_URL) > 8, "URL no configurada")
 
-#    def test_api_add(self):
-#        url = f"{BASE_URL}/calc/add/2/2"
-#        response = urlopen(url, timeout=DEFAULT_TIMEOUT)
-#        self.assertEqual(
-#            response.status, http.client.OK, f"Error en la petición API a {url}"
-#        )
     def test_api_add(self):
         self._test_api_operation("add", 2, 2, 4)
 
@@ -39,11 +33,11 @@ class TestApi(unittest.TestCase):
     def test_api_square_root(self):
         self._test_api_operation("square_root", 9, 3)
 
-    def test_api_logarithm(self):
-        self._test_api_operation("logarithm", 100, 2.0)
+    def test_api_logarithm_base_10(self):
+        self._test_api_operation("logarithm_base_10", 100, 2.0)
 
     def _test_api_operation(self, operation, operand1, operand2, expected_result=None):
-        if operation in ["square_root", "logarithm"]:
+        if operation in ["square_root", "logarithm_base_10"]:
             url = f"{BASE_URL}/calc/{operation}/{operand1}"
         else:
             url = f"{BASE_URL}/calc/{operation}/{operand1}/{operand2}"
@@ -57,6 +51,7 @@ class TestApi(unittest.TestCase):
             self.assertEqual(
                 float(response_data), expected_result, "Resultado incorrecto de la operación"
             )
+
 
 if __name__ == "__main__":
     unittest.main()
